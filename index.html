@@ -99,27 +99,46 @@
     }
 
     #question {
-      display: none;
-      padding-top: 100px;
-      font-size: 40pt; 
-      font-family: Arial, sans-serif; 
-      text-decoration: none; 
-      color: #989898;
-      margin-left: auto;
-      margin-right: auto;
+    	display: none;
+    	padding-top: 100px;
+    	font-size: 40pt; 
+    	font-family: Arial, sans-serif; 
+    	text-decoration: none; 
+    	color: #989898;
+    	margin-left: auto;
+    	margin-right: auto;
     }
 
     #answered {
-      display: none;
-      margin-top: 100px;
-      font-weight: bold;
-      font-size: 100pt; 
-      font-family: Arial, sans-serif; 
-      text-decoration: none; 
-      color: orange;
-      margin-left: auto;
-      margin-right: auto;
+	    display: none;
+	    margin-top: 100px;
+	    font-weight: bold;
+	    font-size: 100pt; 
+	    font-family: Arial, sans-serif; 
+	    text-decoration: none; 
+	    color: orange;
+	    margin-left: auto;
+	    margin-right: auto;
     }
+
+    .class {
+
+    }
+
+	.Three-Dee{
+		font-family: Arial, sans-serif;
+		font-size: 50px;
+		line-height: 1em;
+		color: #eb9807;
+		font-weight:bold;
+		font-size: 134px;
+		text-shadow:0px 0px 0 rgb(211,128,-17),1px 1px 0 rgb(196,113,-32),2px 2px 0 rgb(182,99,-46),3px 3px 0 rgb(167,84,-61),4px 4px 0 rgb(153,70,-75),5px 5px 0 rgb(138,55,-90), 6px 6px 0 rgb(124,41,-104),7px 7px 6px rgba(0,0,0,0.6),7px 7px 1px rgba(0,0,0,0.5),0px 0px 6px rgba(0,0,0,.2);
+		-webkit-animation-duration: 0.8s;
+		-webkit-transform-origin:50% 50%;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-timing-function: linear;
+		-webkit-animation-name: tremble;
+	}
 
     #button {
     	display: none;
@@ -131,20 +150,41 @@
     	margin-left: auto;
     	margin-right: auto;
     	cursor: pointer;
-
     }
 
     #button:hover {
 		background-color: #ffae19;
 	}
+
+	@-webkit-keyframes tremble {
+		0% { -webkit-transform: translate(2px, 1px) rotate(0deg);}
+		10% { -webkit-transform: translate(-1px, -2px) rotate(-1deg); }
+		20% { -webkit-transform: translate(-3px, 0px) rotate(1deg); }
+		30% { -webkit-transform: translate(0px, 2px) rotate(0deg); }
+		40% { -webkit-transform: translate(5px, -1px) rotate(1deg); }
+		50% { -webkit-transform: translate(-1px, 2px) rotate(-1deg); }
+		60% { -webkit-transform: translate(-2px, 1px) rotate(0deg); }
+		70% { -webkit-transform: translate(6px, 2px) rotate(-1deg); }
+		80% { -webkit-transform: translate(-1px, -3px) rotate(1deg); }
+		90% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
+		100% { -webkit-transform: translate(5px, -2px) rotate(-1deg); }
+	}
+
+
 	</style>
+	<script type="text/javascript">
+		function change() {
+			document.body.style.backgroundImage = 'url("img/gifff.gif")';
+			document.getElementById('answered').setAttribute("class", "Three-Dee");
+		};
+	</script>
 </head>
 <body>
 	<div id="question">
 		Is it Free Food Friday this week? 
 	</div> 
 	<br><br>
-	<div id="answered">
+	<div id="answered" class = "none">
 	</div>
 	<br><br><br><br><br><br><br>
 	<button id ="button" onClick="location.reload()">How about now?</button>
@@ -155,13 +195,16 @@
 		var o = w % 2; // equals 0 for even numbered weeks, 1 for odd numbered weeks
 
 		var answer;
-		if (o == 1) { 
+		if (o == 0) { 
 			answer = "Yes";
+			change();
 		} 
 		else {
 			answer = "No :(";
 		}
 
+
+		//animating to fake page load
 		var element = document.getElementById('answered');
 		element.innerHTML = answer;
 
